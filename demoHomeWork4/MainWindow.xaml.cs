@@ -24,5 +24,19 @@ namespace demoHomeWork4
         {
             InitializeComponent();
         }
+
+        private void goToStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClientWindow clientWindow = new ClientWindow();
+            this.Close();
+            clientWindow.ShowDialog();
+        }
+
+        private void goToAdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            CheckCodeWindow checkCodeWindow = new CheckCodeWindow();
+            this.Close();
+            checkCodeWindow.ShowDialog();
+        }
     }
 }

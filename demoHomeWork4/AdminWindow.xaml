@@ -1,0 +1,92 @@
+﻿<Window x:Class="demoHomeWork4.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:demoHomeWork4"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"  Background="#04A0FF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="BackButton" Width="70" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS" Background="#04A0FF" BorderThickness="0" Content="Назад" Click="BackButton_Click"/>
+            <TextBox x:Name="txtSearch" TextChanged="SearchTextBox_TextChanged" Margin="80,10,10,10"/>
+            <TextBlock Grid.Column="1" Text="Сортировка:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="2" x:Name="comboBoxSort"  Margin="10" SelectionChanged="comboBoxSort_SelectionChanged">
+            </ComboBox>
+            <TextBlock Grid.Column="3" Text="Скидка:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="4" x:Name="discountComboBox"  Margin="10" SelectionChanged="myComboBox_SelectionChanged">
+                <ComboBoxItem Content="0-5%"/>
+                <ComboBoxItem Content="5-15%"/>
+                <ComboBoxItem Content="15-30%"/>
+                <ComboBoxItem Content="30-70%"/>
+                <ComboBoxItem Content="70-100%"/>
+                <ComboBoxItem Content="Все"/>
+            </ComboBox>
+        </Grid>
+        <ScrollViewer Grid.Row="2" Background="#dcdcdc">
+            <ItemsControl Name="servicesPanel">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10" Background="{Binding PanelColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                                    <Setter Property="Padding" Value="10"/>
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="Background" Value="#04A0FF"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Image Margin="10" Source="{Binding MainImage}" />
+                            <StackPanel Grid.Column="1" Margin="0,0,0,50">
+                                <TextBlock Text="{Binding Service.Name}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Service.Cost}" Visibility="{Binding OldPriceVisibility}" TextDecorations="Strikethrough"/>
+                                    <TextBlock Text="{Binding PriceText}"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding DiscountText}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Column="1">
+                                <Button Name="btnEdit" Content="Редактировать" Click="ButtonEdit_Click" />
+                                <Button Name="btnDelete" Content="Удалить" Click="ButtonDelete_Click" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <TextBlock Margin="0" Padding="5" Foreground="White" Name="txtCount" Grid.Row="3" Background="#04A0FF"/>
+        <Button Name="AddNewServiceButton" FontFamily="Comic Sans MS" Click="AddNewServiceButton_Click" Grid.Row="3" Width="150" Height="30" Content="Добавить сервис" HorizontalAlignment="Right" Margin="0,0,5,0" Background="#04A0FF" BorderThickness="0"/>
+    </Grid>
+</Window>
