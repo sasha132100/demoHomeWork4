@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoHomeWork4"
         mc:Ignorable="d"
-        Title="CheckCodeWindow" Height="250" Width="450">
+        Title="Код" Height="250" Width="450" Icon="Resources/school_logo.ico">
     <Grid Background="#e7fabf">
         <TextBlock Text="Введите код администратора" FontFamily="Comic Sans MS" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
         <TextBox Name="checkTextBox" Width="200" Height="50" FontFamily="Comic Sans MS" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,55,0,0"/>
